@@ -2,26 +2,26 @@
 
 Fixed::Fixed() {
 	this->_rawBits = 0;
-	std::cout << "Default constructor called" << std::endl;
+//	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &obj) {
-	std::cout << "Copy constructor called" << std::endl;
+//	std::cout << "Copy constructor called" << std::endl;
 	this->_rawBits = obj._rawBits;
 }
 
 Fixed::Fixed(int const value) {
 	this->_rawBits = value << this->_bits;
-	std::cout << "Int constructor called" << std::endl;
+//	std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed(float const value) {
 	this->_rawBits = roundf(value * (1 << this->_bits));
-	std::cout << "Float constructor called" << std::endl;
+//	std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed::~Fixed() {
-	std::cout << "Destructor called" << std::endl;
+//	std::cout << "Destructor called" << std::endl;
 }
 
 float	Fixed::toFloat() const{
@@ -35,7 +35,7 @@ int	Fixed::toInt() const{
 
 Fixed& Fixed::operator=(const Fixed &rhs)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+//	std::cout << "Copy assignment operator called" << std::endl;
 	this->_rawBits = rhs._rawBits;
 	return (*this);
 }
@@ -107,6 +107,23 @@ Fixed	Fixed::operator/(const Fixed &rhs) const{
 	return (this->toFloat() / rhs.toFloat());
 }
 
+//post/pre incr/decr
+int Fixed::operator++()
+{
+//	std::cout << "test 1" << std::endl;
+	return (this->_rawBits++);
+}
+
+Fixed Fixed::operator++(int)
+{
+	Fixed rhs;
+	rhs = *this;
+	this->_rawBits++;
+	return(rhs);
+}
+
+//Fixed operator--() const;
+//Fixed operator--(const Fixed) const;
 
 std::ostream & operator<<(std::ostream & o, Fixed const &value)
 {
