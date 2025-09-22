@@ -23,14 +23,12 @@ Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
 }
 
-//retourner un float a partir d'un int
 float	Fixed::toFloat() const
 {
 	float tmp = (float)this->_rawBits / (1 << this->_bits);
 	return(tmp);
 }
 
-//retourner un int a partir d'un float1
 int	Fixed::toInt() const
 {
 	return (this->_rawBits >> this->_bits);

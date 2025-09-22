@@ -38,7 +38,6 @@ Fixed&	Fixed::operator=(const Fixed &rhs){
 
 	return (*this);
 }
-
 //std::ostream & operator<<(std::ostream & o, Fixed& rhs)
 //{
 //	o << rhs.getRawBits();
