@@ -46,42 +46,42 @@ Fixed& Fixed::operator=(const Fixed &rhs)
 
 bool	Fixed::operator>(const Fixed &rhs) const
 {
-	if (this->toFloat() > rhs.toFloat())
+	if (this->_rawBits> rhs._rawBits)
 		return (true);
 	return (false);
 }
 
 bool	Fixed::operator<(const Fixed &rhs) const
 {
-	if (this->toFloat() < rhs.toFloat())
+	if (this->_rawBits < rhs._rawBits)
 		return (true);
 	return (false);
 }
 
 bool	Fixed::operator>=(const Fixed &rhs) const
 {
-	if (this->toFloat() >= rhs.toFloat())
+	if (this->_rawBits >= rhs._rawBits)
 		return (true);
 	return (false);
 }
 
 bool	Fixed::operator<=(const Fixed &rhs) const
 {
-	if (this->toFloat() <= rhs.toFloat())
+	if (this->_rawBits <= rhs._rawBits)
 		return (true);
 	return (false);
 }
 
 bool	Fixed::operator==(const Fixed &rhs) const
 {
-	if (this->toFloat() == rhs.toFloat())
+	if (this->_rawBits == rhs._rawBits)
 		return (true);
 	return (false);
 }
 
 bool	Fixed::operator!=(const Fixed &rhs) const
 {
-	if (this->toFloat() != rhs.toFloat())
+	if (this->_rawBits != rhs._rawBits)
 		return (true);
 	return (false);
 }
@@ -90,21 +90,21 @@ bool	Fixed::operator!=(const Fixed &rhs) const
 //algo operator
 Fixed	Fixed::operator+(const Fixed &rhs) const{
 
-	return (this->toFloat() + rhs.toFloat());
+	return (this->_rawBits + rhs._rawBits);
 }
 
 Fixed	Fixed::operator-(const Fixed &rhs) const{
 
-	return (this->toFloat() - rhs.toFloat());
+	return (this->_rawBits - rhs._rawBits);
 }
 
 Fixed	Fixed::operator*(const Fixed &rhs) const{
-	return (this->toFloat() * rhs.toFloat());
+	return (this->_rawBits * rhs._rawBits);
 }
 
 Fixed	Fixed::operator/(const Fixed &rhs) const{
 
-	return (this->toFloat() / rhs.toFloat());
+	return (this->_rawBits / rhs._rawBits);
 }
 
 //post/pre incr/decr
@@ -139,8 +139,6 @@ std::ostream & operator<<(std::ostream & o, Fixed const &value)
 	o << value.toFloat();
 	return (o);
 }
-
-
 
 Fixed	Fixed::max(const Fixed& num1, const Fixed& num2)
 {
