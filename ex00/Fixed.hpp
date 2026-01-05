@@ -9,15 +9,13 @@ private:
 public:
 	Fixed(void);
 	Fixed(const int);
+	Fixed(const Fixed&);
 	~Fixed(void);
 
 	Fixed	operator+(const Fixed &rhs) const;
 	Fixed&	operator=(const Fixed &rhs);
 	int		getRawBits(void) const;
 	void	setRawBits(int);
-
 };
-
-//std::ostream & operator<<(std::ostream & o, Fixed const);
 
 #endif

@@ -43,7 +43,6 @@ Fixed& Fixed::operator=(const Fixed &rhs)
 
 
 //comp operator
-
 bool	Fixed::operator>(const Fixed &rhs) const
 {
 	if (this->_rawBits> rhs._rawBits)
@@ -134,7 +133,7 @@ int Fixed::operator--()
 	return (this->_rawBits--);
 }
 
-std::ostream & operator<<(std::ostream & o, Fixed const &value)
+std::ostream& operator<<(std::ostream & o, Fixed const &value)
 {
 	o << value.toFloat();
 	return (o);

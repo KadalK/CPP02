@@ -10,6 +10,11 @@ Fixed::Fixed(int raw) : _rawBits(raw) {
 	std::cout << "Copy assignment operator called" << std::endl;
 }
 
+Fixed::Fixed(const Fixed& obj){
+	std::cout << "Copy assignment operator called" << std::endl;
+	*this = obj;
+}
+
 Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
 }
@@ -38,6 +43,7 @@ Fixed&	Fixed::operator=(const Fixed &rhs){
 
 	return (*this);
 }
+
 std::ostream & operator<<(std::ostream & o, Fixed& rhs)
 {
 	o << rhs.getRawBits();
