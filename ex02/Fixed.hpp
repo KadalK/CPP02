@@ -27,9 +27,9 @@ public:
 	Fixed	operator*(const Fixed &) const;
 	Fixed	operator/(const Fixed &) const;
 //post/pre incr/decr ope
-	int operator++();
+	Fixed  operator++();
 	Fixed operator++(const int);
-	int operator--();
+	Fixed  operator--();
 	Fixed operator--(const int);
 
 	Fixed&	operator=(const Fixed &rhs);

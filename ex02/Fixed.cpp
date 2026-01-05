@@ -43,7 +43,6 @@ Fixed& Fixed::operator=(const Fixed &rhs)
 
 
 //comp operator
-
 bool	Fixed::operator>(const Fixed &rhs) const
 {
 	if (this->_rawBits> rhs._rawBits)
@@ -89,32 +88,36 @@ bool	Fixed::operator!=(const Fixed &rhs) const
 
 //algo operator
 Fixed	Fixed::operator+(const Fixed &rhs) const{
-
-	return (this->_rawBits + rhs._rawBits);
+	Fixed result;
+	result._rawBits = this->_rawBits + rhs._rawBits;
+	return (result);
 }
 
 Fixed	Fixed::operator-(const Fixed &rhs) const{
-
-	return (this->_rawBits - rhs._rawBits);
+	Fixed result;
+	result._rawBits = this->_rawBits - rhs._rawBits;
+	return (result);
 }
 
 Fixed	Fixed::operator*(const Fixed &rhs) const{
-	return (this->_rawBits * rhs._rawBits);
+	Fixed result;
+	result._rawBits = this->_rawBits * rhs._rawBits >> this->_bits;
+	return (result);
 }
 
 Fixed	Fixed::operator/(const Fixed &rhs) const{
-
-	return (this->_rawBits / rhs._rawBits);
+	Fixed result;
+	result._rawBits = this->_rawBits / rhs._rawBits << this->_bits;
+	return (result);
 }
 
 //post/pre incr/decr
-int Fixed::operator++()
-{
-	return (this->_rawBits++);
+Fixed Fixed::operator++(){
+	this->_rawBits++;
+	return (*this);
 }
 
-Fixed Fixed::operator++(int)
-{
+Fixed Fixed::operator++(int){
 	Fixed rhs;
 	rhs = *this;
 	this->_rawBits++;
@@ -129,12 +132,12 @@ Fixed Fixed::operator--(int)
 	return(rhs);
 }
 
-int Fixed::operator--()
+Fixed Fixed::operator--()
 {
 	return (this->_rawBits--);
 }
 
-std::ostream & operator<<(std::ostream & o, Fixed const &value)
+std::ostream& operator<<(std::ostream & o, Fixed const &value)
 {
 	o << value.toFloat();
 	return (o);
